@@ -1,7 +1,7 @@
 Ascii Table
 ===========
 
-Easy table output for node debugging, but you could probably do more with it, 
+Easy table output for deno debugging, but you could probably do more with it, 
 since its just a string.
 
 Table of Contents
@@ -10,6 +10,7 @@ Table of Contents
 * [Usage](#usage)
 * [Example](#usage)
 * [API](#api)
+  - [Constructor](#constructor)
   - [Static Methods](#static-methods)
     * [align(direction, val, len, [pad])](#asciitablealigndirection-val-len-pad)
     * [alignLeft(val, len, [pad])](#asciitablealignleftval-len-pad)
@@ -55,7 +56,7 @@ Usage
 Deno
 
 ```ts
-import AsciiTable, { AsciiAlign } from 'https://deno.land/x/ascii-table/mod.ts';
+import AsciiTable, { AsciiAlign } from 'https://deno.land/x/ascii_table/mod.ts';
 
 const table1 = new AsciiTable('Title')
 table1
@@ -519,8 +520,8 @@ Example:
 
 ```js
 table.addRowMatrix([
-  [2, 'John', 34]
-, [3, 'Jim', 83]
+  [2, 'John', 34],
+  [3, 'Jim', 83]
 ])
 
 ```
@@ -577,11 +578,11 @@ console.log(JSON.stringify(table))
 
 ```js
 {
-  title: 'Title'
-, heading: [ 'id', 'name' ]
-, rows: [ 
-    [ 1, 'Bob' ]
-  , [ 2, 'Steve' ] 
+  title: 'Title',
+  heading: [ 'id', 'name' ],
+  rows: [
+    [ 1, 'Bob' ],
+    [ 2, 'Steve' ] 
   ] 
 }
 ```
@@ -601,12 +602,12 @@ Example:
 
 ```js
 var table = new AsciiTable().fromJSON({
-  title: 'Title'
-, heading: [ 'id', 'name' ]
-, rows: [ 
-    [ 1, 'Bob' ]
-  , [ 2, 'Steve' ] 
-  ] 
+  title: 'Title',
+  heading: [ 'id', 'name' ],
+  rows: [
+    [ 1, 'Bob' ],
+    [ 2, 'Steve' ] 
+  ]
 })
 ```
 
