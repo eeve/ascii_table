@@ -23,6 +23,7 @@ export default class AsciiTable {
   private __maxCells = 0;
   private __aligns: number[] = [];
   private __colMaxes: any[] = [];
+  private __rowMaxes: any[] = [];
   private __spacing = 1;
   private __heading: string[] | null = null;
   private __headingAlign = AsciiAlign.CENTER;
@@ -404,6 +405,7 @@ export default class AsciiTable {
     this.__rows = [];
     this.__maxCells = 0;
     this.__colMaxes = [];
+    this.__rowMaxes = [];
     return this;
   }
 
@@ -471,6 +473,14 @@ export default class AsciiTable {
       }
     }
     this.__colMaxes = max;
+
+    this.__rowMaxes = this.__rows.map((row) => {
+      return row.reduce(
+        (cum: number, cur: string) => Math.max(cum, cur.split("\n").length),
+        0,
+      );
+    });
+
     justify = this.__justify ? Math.max.apply(null, max) : 0;
 
     // Get
